@@ -8,7 +8,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 function jump() {
-    if (dino.classList != 'jump') {
+    if (!dino.classList.contains('jump')) {
         dino.classList.add('jump');
         setTimeout(function() {
             dino.classList.remove('jump');
@@ -17,10 +17,10 @@ function jump() {
 }
 
 let isAlive = setInterval(function() {
-    let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue('top'));
+    let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'));
     let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue('left'));
 
-    if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
+    if (cactusLeft < 50 && cactusLeft > 0 && dinoTop <= 40) {
         alert('Game Over!');
     }
 }, 10);
